@@ -1,20 +1,11 @@
 // @flow
 
-import React, { Component } from 'react';
-import { Provider } from 'react-redux';
+import React, { Component } from "react";
 
-import createStore from 'app/src/modules/store';
-import RootNavigation from './RootNavigation';
-
-const store = createStore();
+import RootNavigation from "./RootNavigation";
 
 export default class App extends Component {
-
   render() {
-    return (
-      <Provider store={store}>
-        <RootNavigation />
-      </Provider>
-    );
+    return <RootNavigation />;
   }
 }

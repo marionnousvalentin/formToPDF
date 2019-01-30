@@ -1,37 +1,15 @@
 // @flow
 
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
 
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, createAppContainer } from "react-navigation";
 
-import * as Pages from 'app/src/pages';
-import { navListener } from 'app/src/modules/Nav/module';
+import * as Pages from "app/src/pages";
 
 export const AppNavigator = createStackNavigator({
   home: {
-    screen: Pages.Home,
-  },
-});
-
-class App extends React.Component {
-  render() {
-    return (
-      <AppNavigator
-        navigation={{
-          dispatch: this.props.dispatch,
-          state: this.props.nav,
-          addListener: navListener,
-        }}
-      />
-    );
+    screen: Pages.Home
   }
-}
-
-const mapStateToProps = state => ({
-  nav: state.nav,
 });
 
-const AppWithNavigationState = connect(mapStateToProps)(App);
-
-export default AppWithNavigationState;
+export default createAppContainer(AppNavigator);
