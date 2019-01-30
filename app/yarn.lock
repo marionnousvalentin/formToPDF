@@ -4758,6 +4758,11 @@ react-native-gesture-handler@^1.0.0:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
+react-native-html-to-pdf@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-html-to-pdf/-/react-native-html-to-pdf-0.6.0.tgz#0990ca94f145dc9e239c5d0af430c45eb761ac48"
+  integrity sha512-QjpKAkSMeWeTwzhtZ7kCL6BQQInjf+vEaUPwFgW6DtuCEwQSH/iGX6wwfJRHeFJz+asalqq/+4cuCHhY9QE5rQ==
+
 react-native-safe-area-view@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-view/-/react-native-safe-area-view-0.11.0.tgz#4f3dda43c2bace37965e7c6aef5fc83d4f19d174"
