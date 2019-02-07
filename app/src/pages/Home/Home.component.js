@@ -19,12 +19,18 @@ export default class Home extends Component {
 
   constructor() {
     super();
-    this.state = {};
+    this.state = {
+      values: {}
+    };
   }
 
   componentDidMount() {
     this.getPdfSource().then(pdfSource =>
-      this.setState({ source: pdfSource, text: "Commence ! ", showPdf: false })
+      this.setState({
+        source: pdfSource,
+        values: { guest: "", date: "" },
+        showPdf: false
+      })
     );
   }
 
@@ -33,7 +39,7 @@ export default class Home extends Component {
   }
 
   getPdfSource = async () => {
-    const file = await createPDF(this.state.text);
+    const file = await createPDF(this.state.values);
     const source = {
       uri: `file://${file.filePath}`,
       cache: true
@@ -42,7 +48,7 @@ export default class Home extends Component {
   };
 
   refreshPdf = () => {
-    this.setState({ showPdf: !this.state.showPdf });
+    this.setState({ showPdf: true });
   };
 
   render() {
@@ -53,10 +59,27 @@ export default class Home extends Component {
         {/* <ScrollView> */}
         <TextInput
           style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
-          onChangeText={text => this.setState({ text, showPdf: false })}
-          value={this.state.text}
+          onChangeText={text =>
+            this.setState({
+              values: { ...this.state.values, guest: text },
+              showPdf: false
+            })
+          }
+          value={this.state.values.guest}
+          placeholder="Who is your guest?"
         />
-        <Button title={"Press to show PDF"} onPress={this.refreshPdf} />
+        <TextInput
+          style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+          onChangeText={date =>
+            this.setState({
+              values: { ...this.state.values, date: date },
+              showPdf: false
+            })
+          }
+          value={this.state.values.date}
+          placeholder="When is your birthday?"
+        />
+        <Button title={"Press to show your PDF"} onPress={this.refreshPdf} />
         {showPdf && (
           <Pdf
             style={{
