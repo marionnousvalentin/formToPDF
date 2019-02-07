@@ -2,7 +2,7 @@ import { Page } from "app/src/components";
 import React, { Component } from "react";
 import { createPDF } from "../../lib/createPDF";
 import Pdf from "react-native-pdf";
-import { Alert, Text } from "react-native";
+import { Alert, Dimensions, ScrollView, Text } from "react-native";
 
 export default class Home extends Component {
   static navigationOptions = {
@@ -30,12 +30,17 @@ export default class Home extends Component {
 
   render() {
     const pdfSource = this.state.source;
-    console.log("f", pdfSource);
     return (
       <Page>
-        <Text>{JSON.stringify(pdfSource)}</Text>
         {pdfSource && (
-          <Pdf source={pdfSource} onError={error => Alert.alert(`${error}`)} />
+          <Pdf
+            style={{
+              flex: 1,
+              width: Dimensions.get("window").width
+            }}
+            source={pdfSource}
+            onError={error => Alert.alert(`${error}`)}
+          />
         )}
       </Page>
     );
