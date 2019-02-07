@@ -32,6 +32,8 @@ export default class Home extends Component {
     const pdfSource = this.state.source;
     return (
       <Page>
+        {/* <ScrollView> */}
+        <Text>{JSON.stringify(pdfSource)}</Text>
         {pdfSource && (
           <Pdf
             style={{
@@ -42,6 +44,7 @@ export default class Home extends Component {
             onError={error => Alert.alert(`${error}`)}
           />
         )}
+        {/* </ScrollView> */}
       </Page>
     );
   }
