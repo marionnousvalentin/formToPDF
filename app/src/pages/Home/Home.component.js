@@ -5,10 +5,10 @@ import Pdf from "react-native-pdf";
 import {
   Alert,
   Dimensions,
-  ScrollView,
   Text,
   TextInput,
-  Button
+  Button,
+  StyleSheet
 } from "react-native";
 
 export default class Home extends Component {
@@ -56,9 +56,8 @@ export default class Home extends Component {
     const showPdf = this.state.showPdf;
     return (
       <Page>
-        {/* <ScrollView> */}
         <TextInput
-          style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+          style={styles.textInput}
           onChangeText={text =>
             this.setState({
               values: { ...this.state.values, guest: text },
@@ -69,7 +68,7 @@ export default class Home extends Component {
           placeholder="Qui est ton invité ?"
         />
         <TextInput
-          style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
+          style={styles.textInput}
           onChangeText={date =>
             this.setState({
               values: { ...this.state.values, date: date },
@@ -82,19 +81,24 @@ export default class Home extends Component {
         <Button title={"Montre-moi !"} onPress={this.refreshPdf} />
         {showPdf && (
           <Pdf
-            style={{
-              flex: 1,
-              width: Dimensions.get("window").width
-            }}
+            style={styles.pdf}
             source={pdfSource}
             onError={error => Alert.alert(`${error}`)}
           />
         )}
-        {/* </ScrollView> */}
       </Page>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  textInput: { height: 40, borderColor: "gray", borderWidth: 1, margin: 8 },
+  pdf: {
+    flex: 1,
+    width: Dimensions.get("window").width,
+    alignSelf: "center"
+  }
+});
 
 type PropsType = {
   navigation: any

@@ -1,15 +1,17 @@
 export const style = `
 <style type="text/css">
-  .column {
-    color: #525668;
-    background-color: #92a8d1;
-  }
   .block_title {
     font-size: 50;
     color: #525668;
     text-transform: uppercase;
-    width: 100%;
-    margin: 10;
+    margin: 100;
+    text-align: center;
+  }
+  .ligne {
+    color: #525668;
+    font-size: 40;
+    margin: 50;
+    word-break: break-all;
   }
 </style>
 `;
