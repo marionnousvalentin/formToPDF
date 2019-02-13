@@ -66,7 +66,7 @@ export default class Home extends Component {
             })
           }
           value={this.state.values.guest}
-          placeholder="Who is your guest?"
+          placeholder="Qui est ton invité ?"
         />
         <TextInput
           style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
@@ -77,9 +77,9 @@ export default class Home extends Component {
             })
           }
           value={this.state.values.date}
-          placeholder="When is your birthday?"
+          placeholder="Quelle est la date ?"
         />
-        <Button title={"Press to show your PDF"} onPress={this.refreshPdf} />
+        <Button title={"Montre-moi !"} onPress={this.refreshPdf} />
         {showPdf && (
           <Pdf
             style={{
