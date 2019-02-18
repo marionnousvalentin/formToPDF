@@ -27,7 +27,7 @@ export default class Home extends Component {
   componentDidMount() {
     this.getPdfSource().then(pdfSource =>
       this.setState({
-        source: pdfSource,
+        pdfSource,
         values: { guest: "", date: "" },
         showPdf: false
       })
@@ -40,11 +40,10 @@ export default class Home extends Component {
 
   getPdfSource = async () => {
     const file = await createPDF(this.state.values);
-    const source = {
-      uri: `file://${file.filePath}`,
-      cache: true
+    const pdfSource = {
+      uri: `file://${file.filePath}`
     };
-    return source;
+    return pdfSource;
   };
 
   refreshPdf = () => {
@@ -52,8 +51,7 @@ export default class Home extends Component {
   };
 
   render() {
-    const pdfSource = this.state.source;
-    const showPdf = this.state.showPdf;
+    const { pdfSource, showPdf } = this.state;
     return (
       <Page>
         <TextInput
